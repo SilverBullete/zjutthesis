@@ -1,17 +1,17 @@
 %%
 %% Copyright (C) 2008-09-24 by Wei-Wei Guo <wwguo@zju.edu.cn>
 %% Copyright (C) 2012-12-28 by Myau-tsai PAN <ibmmc@live.com>, Unlucky <unlucky1990@gmail.com>
-%% 
+%%
 %% This file may be distributed and/or modified under the conditions of
 %% the LaTeX Project Public License, either version 1.2 of this license
 %% or (at your option) any later version.  The latest version of this
 %% license is in:
-%% 
+%%
 %%    http://www.latex-project.org/lppl.txt
-%% 
+%%
 %% and version 1.2 or later is part of all distributions of LaTeX version
 %% 1999/12/01 or later.
-%% 
+%%
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{zjutthesis}
     [2012/12/28 v0.1 ZJUT Thesis Class]
@@ -67,6 +67,7 @@
 %\RequirePackage{CJKutf8}                       % 用在UTF8编码环境下，它可以自动调用CJK，同时针对UTF8编码作了设置。
 %\RequirePackage{hypbmsec}                      % 用来控制书签中标题显示内容
 \RequirePackage{CJKfntef}
+\usepackage[heading=true]{ctex}                 %载入ctex宏包
 \RequirePackage{times}
 % see issue #27
 \RequirePackage{expl3}	% \ExplSyntaxOn 依赖于 expl3，否则可能会编译不过
@@ -80,7 +81,7 @@
     \cs_set_eq:NN \dim_min:nn \__save_dim_min:nn
 }
 \ExplSyntaxOff
-\RequirePackage{fontspec,xunicode,xltxtra}      % XeLaTeX相关字体字库 
+\RequirePackage{fontspec,xunicode,xltxtra}      % XeLaTeX相关字体字库
 %如果您的pdf制作中文书签有乱码使用如下命令，就可以解决了
 \RequirePackage[xetex, unicode,
     pdfstartview=FitH,
@@ -99,7 +100,9 @@
 \RequirePackage{calc}
 \RequirePackage{setspace}
 \RequirePackage{listings} %插入代码
+\usepackage{fancyvrb}
 \RequirePackage{xcolor} %代码高亮
+
 
 %% 代码高亮设置
 \lstset{numbers=left, %设置行号位置
@@ -114,7 +117,7 @@
         tabsize=4, %设置tab空格数
         showspaces=false %不显示空格
        }
-	   
+	
 %支持算法环境
 \RequirePackage[boxed,ruled,lined]{algorithm2e}
 \RequirePackage{algorithmic}
@@ -169,7 +172,7 @@
 \DeclareRobustCommand{\xiaoyi}{\fontsize{24pt}{\baselineskip}\selectfont}  % 小一
 \DeclareRobustCommand{\erhao}{\fontsize{22pt}{\baselineskip}\selectfont}   % 二号
 \DeclareRobustCommand{\xiaoer}{\fontsize{18pt}{\baselineskip}\selectfont}  % 小二
-\DeclareRobustCommand{\sanhao}{\fontsize{16pt}{\baselineskip}\selectfont}  % 三号 
+\DeclareRobustCommand{\sanhao}{\fontsize{16pt}{\baselineskip}\selectfont}  % 三号
 \DeclareRobustCommand{\xiaosan}{\fontsize{15pt}{\baselineskip}\selectfont} % 小三
 \DeclareRobustCommand{\sihao}{\fontsize{14pt}{\baselineskip}\selectfont}   % 四号
 \DeclareRobustCommand{\xiaosi}{\fontsize{12pt}{\baselineskip}\selectfont}  % 小四
@@ -187,55 +190,47 @@
 \setcounter{secnumdepth}{3} % 自动编号最大深度 到subsubsection
 \setcounter{tocdepth}{2} % 目录显示深度到 subsection
 
+\ctexset{
+    chapter/name    = {第,章},
+    chapter/number  = \chinese{chapter},
+}
 
-%%%%%%%%%%%%%%%%%%%%
-%% 各级标题
-%% \titleformat{hcommandi}[hshapei]{hformati}{hlabeli}{hsepi}{hbefore-codei}[hafter-cod]
-%% \titlespacing*{hcommandi}{hlefti}{hbefore-sepi}{hafter-sepi}[hright-sepi]
-%% \titlecontents ToC
-%% http://mirror.bjtu.edu.cn/CTAN/macros/latex/contrib/titlesec/titlesec.pdf
-%%%%%%%%%%%%%%%%%%%%
+\ctexset{
+%%% 1级标题，小二，黑体，居中，加粗，段前段后18磅，1.5倍行距
+  chapter = {
+    format       = \xiaoer\bfseries\heiti\centering,
+    nameformat   = {},
+    titleformat  = {},
+    aftername    = \quad,
+    afterindent  = true,
+    beforeskip   = {-9pt},% XXX 调整行距后@mckelvin 人工调的
+    afterskip    = {18pt},% XXX 调整行距后@mckelvin 人工调的
+  },
+%%% 2级标题，小三，宋体，加粗，段前12磅，段后6磅，1.5倍行距
+  section = {
+    format       = \xiaosan\bfseries\songti,
+    afterindent  = true,
+    beforeskip   = {-6pt},% XXX 调整行距后@mckelvin 人工调的
+    afterskip    = {6pt}, % XXX 调整行距后@mckelvin 人工调的
+  },
+%%% 3级标题，四号，宋体，加粗，段前6磅，1.5倍行距，建议不使用四级或更高级别目录、标题
+  subsection = {
+    format       = \sihao\bfseries\songti,
+    afterindent  = true,
+    beforeskip   = {-3pt},% XXX 调整行距后@mckelvin 人工调的
+    afterskip    = {0pt}, % XXX 调整行距后@mckelvin 人工调的
+  },
+%%% 4级标题 DEPRECATED
+  subsubsection = {
+    format       = \xiaosi\bfseries\songti,
+    afterindent  = true,
+    beforeskip   = {0pt},% XXX 调整行距后@mckelvin 人工调的
+    afterskip    = {0pt},% XXX 调整行距后@mckelvin 人工调的
+  },
+  paragraph/afterindent    = true,
+  subparagraph/afterindent = true,
+}
 
-%%% 1级标题，小二，黑体，居中，加粗，段前段后18磅，1.5倍行距 {
-\titleformat{\chapter}[block]{\onehalfspacing  \xiaoer\heiti\filcenter\bfseries}{第\CJKnumber{\thechapter}章}{1ex}{}{}
-\titlespacing{\chapter}{0pt}{-9pt}{18pt} % XXX 调整行距后@mckelvin 人工调的
-\titlecontents{chapter}[0.1ex]
-        {}
-        {\wuhao\bfseries{第\CJKnumber{\thecontentslabel{}}章\hspace{1ex}}}
-        {\wuhao\bfseries}
-        {\wuhao\bfseries\titlerule*[3pt]{.}\contentspage}
-%%% }
-
-%%% 2级标题，小三，宋体，加粗，段前12磅，段后6磅，1.5倍行距 {
-\titleformat{\section}[hang]{\onehalfspacing \xiaosan\songti\bfseries}{\thesection}{1em}{}{}
-\titlespacing{\section}{0pt}{-6pt}{6pt} % XXX 调整行距后@mckelvin 人工调的
-\titlecontents{section}[1.0ex]
-        {}
-        {\wuhao\hspace{1ex}\thecontentslabel\hspace{1em}}
-        {\wuhao}
-        {\wuhao\titlerule*[3pt]{.}\contentspage}
-%%% }
-
-%%% 3级标题，四号，宋体，加粗，段前６磅，1.5倍行距，建议不使用四级或更高级别目录、标题 {
-\titleformat{\subsection}[hang]{\onehalfspacing \sihao\songti\bfseries}{\thesubsection}{1em}{}{}
-\titlespacing{\subsection}{0pt}{-3pt}{0pt} % XXX 调整行距后@mckelvin 人工调的
-\titlecontents{subsection}[1.0ex]
-        {}
-        {\wuhao\hspace{2em}\thecontentslabel\hspace{1em}}
-        {\wuhao}
-        {\wuhao\titlerule*[3pt]{.}\contentspage}
-%%% }
-
-%%% 4级标题 DEPRECATED {
-\titleformat{\subsubsection}[hang]{\onehalfspacing \xiaosi\songti\bfseries}{\thesubsubsection}{1em}{}{}
-\titlespacing{\subsubsection}{0pt}{0.0\baselineskip}{0.0\baselineskip}
-\titlecontents{subsubsection}[1.0ex]
-        {}
-        {\wuhao\hspace{3em}\thecontentslabel\hspace{1em}}
-        {\wuhao}
-        {\wuhao\titlerule*[3pt]{.}\contentspage}
-
-%%% }
 
 %%% 中文摘要及关键词 {
 \newenvironment{abstractc}
@@ -278,7 +273,6 @@
 
 %%% 图目录
 \renewcommand{\listfigurename}{\centerline{\zjut@label@listfigurename}}
-\renewcommand{\numberline}[1]{\zjut@label@figurename~#1\hspace*{1em}}
 \renewcommand{\figurename}{~\zjut@label@figurename~}
 \renewcommand{\thefigure}{~\thechapter-\arabic{figure}~}
 \titlecontents{figure}[0.1ex]
@@ -289,7 +283,7 @@
 
 %%% 表目录
 \renewcommand{\listtablename}{\centerline{\zjut@label@listtablename}}
-\renewcommand{\numberline}[1]{\zjut@label@tablename~#1\hspace*{1em}}
+
 \renewcommand{\tablename}{~\zjut@label@tablename~}
 \renewcommand{\thetable}{~\thechapter-\arabic{table}~}
 \titlecontents{table}[0.1ex]

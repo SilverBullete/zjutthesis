@@ -1,9 +1,9 @@
 ## 浙江工业大学计算机学院本科毕业设计模板(非官方)
 
-本项目目前由[精弘网络团队](http://github.com/ZJUT)维护，欢迎工大的童鞋使用与贡献代码。
+本项目目前由[精弘网络团队](https://github.com/zjutjh)维护，欢迎工大的童鞋使用与贡献代码。
 
 目前维护者:
-[SuzieWong](http://www.imsuzie.com)
+[SilverBullete](https://github.com/SilverBullete)
 
 本项目fork于[Unlucky](http://blog.thebeyond.name)的童鞋的Repo，感谢他们的辛苦付出，附[原始模板地址](https://github.com/unlucky/zjutthesis),
 
@@ -12,7 +12,8 @@
 
 原始贡献者: 
 [McKelvin](https://github.com/mckelvin), 
-[Brilliant](https://github.com/Brilliant)
+[Brilliant](https://github.com/Brilliant),
+[SuzieWong](http://www.imsuzie.com)
 
 ## 1、简介
 

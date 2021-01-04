@@ -68,28 +68,28 @@ EPS~格式图片可通过多种方式生成，这里介绍一款功能强大的�
 
 
 其插入图片的代码及其说明如下。
-\vspace{1em}\noindent\hrule
-\begin{verbatim}
+
+\lstset{language=tex,tabsize=4}
+\begin{lstlisting}
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.4\textwidth]{文件名(.eps)}
 \caption{标题}\label{标签名(通常为 fig:labelname)}
 \vspace{\baselineskip} %表示图与正文空一行
 \end{figure}
-\end{verbatim}
+\end{lstlisting}
 
-\noindent\hrule
 
-\begin{verbatim}
+
+
 figure环境的可选参数[htbp]表示浮动图形所放置的位置，h (here)表示当前位置，t (top)表示页芯顶部，b (bottom)表示页芯底部，p (page)表示单独一页。在Word等软件中，图片通常插入到当前位置，如果当前页的剩余空间不够，图片将被移动到下一页，当前页就会出现很大的空白，其人工调整工作非常不便。由LaTeX提供的浮动图片功能，总是会按h->t->b->p的次序处理选项中的字母，自动调整图片的位置，大大减轻了工作量。
-\centering命令将后续内容转换成每行皆居中的格式。
-"\includegraphics"的可选参数用来设置图片插入文中的水平宽度，一般表示为正文宽度(\textwidth)的倍数。
-\caption命令可选参数“标签名”为英文形式，一般不以图片或表格的数字顺序作为标签，而应包含一定的图片或表格信息，以便于文中引用（若图片、表格、公式、章节和参考文献等在文中出现的先后顺序发生了变化，其标注序号及其文中引用序号也会跟着发生变化，这一点是Word等软件所不能做到的）。另外，图题或表题并不会因为分页而与图片或表格体分置于两页，章节等各级标题也不会置于某页的最底部，LaTeX系统会自动调整它们在正文中的位置，这也是Word等软件所无法匹敌的。
-\vspace将产生一定高度的竖直空白，必选参数为负值表示将后续文字位置向上提升，参数值可自行调整。em为长度单位，相当于大写字母M的宽度。\vspace{\baselineskip} 表示图与正文空一行。
-引用方法：“见图~\ref{fig:figname}”、“如图~\ref{fig:figname}~所示”等。
-\end{verbatim}
+\verb|\centering|命令将后续内容转换成每行皆居中的格式。
+\verb|"\includegraphics"|的可选参数用来设置图片插入文中的水平宽度，一般表示为正文宽度(\verb|\textwidth|)的倍数。
+\verb|\caption|命令可选参数“标签名”为英文形式，一般不以图片或表格的数字顺序作为标签，而应包含一定的图片或表格信息，以便于文中引用（若图片、表格、公式、章节和参考文献等在文中出现的先后顺序发生了变化，其标注序号及其文中引用序号也会跟着发生变化，这一点是Word等软件所不能做到的）。另外，图题或表题并不会因为分页而与图片或表格体分置于两页，章节等各级标题也不会置于某页的最底部，LaTeX系统会自动调整它们在正文中的位置，这也是Word等软件所无法匹敌的。
+\verb|\vspace|将产生一定高度的竖直空白，必选参数为负值表示将后续文字位置向上提升，参数值可自行调整。em为长度单位，相当于大写字母M的宽度。\verb|\vspace{\baselineskip}| 表示图与正文空一行。
+引用方法：“见图\verb|~\ref{fig:figname}|”、“如图\verb|~\ref{fig:figname}~|所示”等。
 
-\noindent\hrule\vspace{1em}
+
 
 若需要将~2~张及以上的图片并排插入到一行中，则需要采用\verb|minipage|环境，如图~\ref{fig:dd}~和图~\ref{fig:ds}~所示。
 \begin{figure}[H]
@@ -108,8 +108,9 @@ figure环境的可选参数[htbp]表示浮动图形所放置的位置，h (here)
 \end{figure}
 
 其代码如下所示。
-\vspace{1em}\noindent\hrule
-\begin{verbatim}
+
+\lstset{language=tex,tabsize=4}
+\begin{lstlisting}
 \begin{figure}[H]
 \centering
 \begin{minipage}{0.4\textwidth}
@@ -123,15 +124,12 @@ figure环境的可选参数[htbp]表示浮动图形所放置的位置，h (here)
 \caption{标题}\label{fig:f2}
 \end{minipage}\vspace{\baselineskip}
 \end{figure}
-\end{verbatim}
+\end{lstlisting}
 
-\noindent\hrule
 
-\begin{verbatim}
-minipage环境的必选参数用来设置小页的宽度，若需要在一行中插入n个等宽图片，则每个小页的宽度应略小于(1/n)\textwidth。
-\end{verbatim}
+minipage环境的必选参数用来设置小页的宽度，若需要在一行中插入n个等宽图片，则每个小页的宽度应略小于\verb|(1/n)\textwidth|。
 
-\noindent\hrule
+
 
 \section{具有子图的图片插入方法}
 
@@ -147,9 +145,9 @@ minipage环境的必选参数用来设置小页的宽度，若需要在一行中
 \end{figure}
 
 其代码及其说明如下。
-\vspace{1em}\noindent\hrule
 
-\begin{verbatim}
+\lstset{language=tex,tabsize=4}
+\begin{lstlisting}
 \begin{figure}[H]
   \centering
   \subfigure[第1个子图标题]{
@@ -161,16 +159,16 @@ minipage环境的必选参数用来设置小页的宽度，若需要在一行中
   \caption{总标题}\label{总标签(通常为 fig:subfig1)}
 \vspace{\baselineskip}
 \end{figure}
-\end{verbatim}
+\end{lstlisting}
 
-\noindent\hrule
 
-\begin{verbatim}
+
+
 子图的标签实际上可以随意设定，只要不重复就行。但为了更好的可读性，我们建议fig:subfig:subsubfig格式命名，这样我们从标签名就可以知道这是一个子图引用。
-引用方法：总图的引用方法同本章第1节，子图的引用方法用\ref{fig:subfig:subsubfig}来代替。
-\end{verbatim}
+引用方法：总图的引用方法同本章第1节，子图的引用方法用\verb|\ref{fig:subfig:subsubfig}|来代替。
 
-\noindent\hrule\vspace{1em}
+
+
 
 子图的引用示例：如图~\ref{fig:subfig:datadim}~和图~\ref{fig:subfig:datasize}~所示。
 
