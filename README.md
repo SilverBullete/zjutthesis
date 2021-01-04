@@ -5,10 +5,10 @@
 目前维护者:
 [SilverBullete](https://github.com/SilverBullete)
 
-本项目fork于[Unlucky](http://blog.thebeyond.name)的童鞋的Repo，感谢他们的辛苦付出，附[原始模板地址](https://github.com/unlucky/zjutthesis),
+本项目fork于[Unlucky](https://github.com/unlucky)的童鞋的Repo，感谢他们的辛苦付出，附[原始模板地址](https://github.com/unlucky/zjutthesis),
 
 原始作者: 
-[Unlucky](http://blog.thebeyond.name)
+[Unlucky](https://github.com/unlucky)
 
 原始贡献者: 
 [McKelvin](https://github.com/mckelvin), 
